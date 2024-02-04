@@ -55,7 +55,3 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Contact
 
 For support, feature requests, or bug reports, please create an issue on the [GitHub repository](https://github.com/dev-alamin/elementor-food-menu/issues).
-
----
-
-**Note:** Update the URLs, placeholders, and content based on your actual project details. You may also want to include a screenshot of your widget in action (`screenshot.png`).
