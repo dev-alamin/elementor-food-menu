@@ -1,19 +1,30 @@
 @font-face {
   font-family: "DejaVu Sans";
-  src: url("/fonts/DejaVuSans.ttf");
+  src: url("../fonts/DejaVuSans.ttf");
 }
 * {
   padding: 0px;
   margin: 0px;
 }
-
+:root{
+    --sd-food-primary-color: #ff3922;
+}
 .foods {
   width: 100%;
   background-color: #ffead5;
   padding: 70px 20px;
 }
+.sd-food-section-heading {
+    margin-bottom: 25px;
+}
 
-.foods .section-heading {
+.bg-image {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.foods .section-heading .title {
   font-size: 50px;
   line-height: 55px;
   color: #000;
@@ -27,11 +38,13 @@
 }
 .foods .content h3 {
   font-family: "DejaVu Sans";
-  color: #ff3922;
+  color: var(--sd-food-primary-color);
   font-size: 40px;
   line-height: 45px;
 }
-
+.foods .content h3 a{
+    color: var(--sd-food-primary-color);
+}
 .foods .content p {
   font-family: "DejaVu Sans";
   color: #2b2e34;
@@ -43,6 +56,48 @@
 .foods .food-image img {
   width: 100%;
 }
+.foods .content h3 a {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+}
+.foods .content{
+    width: 100%;
+}
+.single-menu .food-image {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.single-menu .food-image img {
+    max-width: 300px;
+}
+
+.single-menu {
+    margin-bottom: 3em;
+}
+
+.title-price-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.foods .content h3 a .title {
+/*     width: 93%; */
+    position: relative;
+    z-index: 1;
+}
+
+/* .foods .content h3 a .title:after {
+    position: absolute;
+    content: '';
+    height: 2px;
+    background-image: repeating-linear-gradient(90deg, transparent, transparent 6px, var(--sd-food-primary-color) 6px, var(--sd-food-primary-color) 8px);
+    width:  100%;
+    right: 0;
+    bottom: 8px;
+    z-index: -1;
+} */
 
 @media screen and (max-width: 1024px) {
   .foods .section-heading {
@@ -71,6 +126,12 @@
   .foods .content p {
     font-size: 18px;
   }
+	.single-menu .food-image {
+    justify-content: center;
+}
+	.foods .content h3 a .title:after {
+    bottom:5px;
+}
 }
 
 @media screen and (max-width: 425px) {

@@ -1,6 +1,4 @@
-<?php 
-namespace Elementor_Test;
-
+<?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -12,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @since 1.0.0
  */
-final class Elementor_Test {
+final class Elementor_Config {
 
 	/**
 	 * Addon Version
@@ -112,8 +110,6 @@ final class Elementor_Test {
 			return false;
 		}
 
-		add_action( 'elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories'] );
-
 		return true;
 
 	}
@@ -203,11 +199,9 @@ final class Elementor_Test {
 
 		add_action( 'elementor/widgets/register', [ $this, 'register_widgets' ] );
 		add_action( 'elementor/controls/register', [ $this, 'register_controls' ] );
-
-		/* add action elementor test widgets */ 
-		add_action( 'elementor/elements/categories_registered', [$this, 'add_elementor_widget_categories'] );
-
+	
 		add_action( 'elementor/frontend/after_enqueue_styles', [$this, 'my_plugin_frontend_stylesheets']);
+		add_action( 'elementor/frontend/before_register_scripts', [$this, 'my_plugin_frontend_scripts'] );
 
 	}
 
@@ -228,7 +222,7 @@ final class Elementor_Test {
 
 		require_once( __DIR__ . '/widgets/food-menu.php' );
 	
-		$widgets_manager->register( new \Widget_1() );
+		$widgets_manager->register( new \SD_Food_Menu() );
 	}
 	
 
@@ -260,18 +254,6 @@ final class Elementor_Test {
 	 * 
 	 * Fired by `elementor/widgets/register` action hook.
 	 * */ 
-	public function add_elementor_widget_categories( $elements_manager ) {
-
-		$elements_manager->add_category(
-			'sd-food-menu-cat',
-			[
-				'title' => esc_html__( 'Elementor Test', 'sd-food-menu' ),
-				'icon' => 'fa fa-plug',
-			]
-		);	
-	}
-
-
 	
 	public function my_plugin_frontend_stylesheets() {
 
@@ -282,4 +264,17 @@ final class Elementor_Test {
 		wp_enqueue_style( 'plugin-main-css' );
 	
 	}
+
+
+	public function my_plugin_frontend_scripts() {
+
+		wp_register_script( 'bootstrap-main-js', plugins_url() . '/sd-food-menu/assets/js/bootstrap.bundle.min.js' );
+        wp_register_script( 'sd-food-menu-main', plugins_url() . '/sd-food-menu/assets/js/script.js' );
+
+		wp_enqueue_script( 'bootstrap-main-js' );
+		wp_enqueue_script( 'sd-food-menu-main' );
+	
+	}
+	
+	
 }

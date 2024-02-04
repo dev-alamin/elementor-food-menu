@@ -1,14 +1,13 @@
 <?php
 /**
  * Plugin Name: SD Food Menu
- * Description: Lorem ipsum dolor sit amet consectetur adipisicing elit.
- * Plugin URI:  https://promasudbd.com/
+ * Description: An Elementor food menu creator addon. 
+ * Plugin URI:  https://shalikdev.com/plugins/food-menu
  * Version:     1.0.0
- * Author:      masud rana
- * Author URI:  https://promasudbd.com/
+ * Author:      ShalikDev
+ * Author URI:  https://almn.me/
  * Text Domain:sd-food-menu
  */
-use \Elementor_Test\Elementor_Test as Elementor_Test;
 
  if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
@@ -20,7 +19,7 @@ function elementor_test_addon() {
 	require_once( __DIR__ . '/includes/plugin.php' );
 
 	// Run the plugin
-	Elementor_Test::instance();
+	Elementor_Config::instance();
 
 }
 add_action( 'plugins_loaded', 'elementor_test_addon' );
